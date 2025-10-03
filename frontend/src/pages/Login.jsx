@@ -17,49 +17,37 @@ export default function Login() {
 
     return (
         <div id="login-container">
-            <div id="login-form" style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100vh",   // full screen height
-                background: "#f0f0f0" // parent background color
-            }}>
-                <div style={{
-                    width: "400px",
-                    padding: "20px",
-                    background: "white",
-                    borderRadius: "8px",
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
-                }}>
-                    <h2>Login</h2>
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            style={{ display: "block", margin: "10px 0", width: "100%" }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            style={{ display: "block", margin: "10px 0", width: "100%" }}
-                        />
-                        <button type="submit" style={{ width: "100%", margin: "10px 0" }}>
-                            Login
-                        </button>
-                    </form>
-                    <button
-                        onClick={handleGoogleLogin}
-                        style={{ width: "100%", background: "#db4437", color: "white" }}
-                    >
-                        Login with Google
+            <div id="login-form">
+
+                <h1>Welcome to <span id="login-inline-logo">KapeCRM</span></h1>
+
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+
+                    />
+                    <button type="submit" >
+                        Login
                     </button>
-                </div>
+                    <button onClick={handleGoogleLogin}>
+                        Continue with Google
+                    </button>
+                </form>
+
+                <div id="login-bottom">Don't have a crm.kape.live account? <a href="/signup">Sign up</a></div>
+
             </div>
             <div id="login-image"></div>
         </div>
