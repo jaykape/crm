@@ -26,11 +26,8 @@ You can check the live demo here:  [crm.kape.live](https://crm.kape.live)
 
 ### 1. Why this project exists.
 
-I have two main drives for this project.
+At my previous company we cound't find a CRM platform in the market that has much customizable. Even though we can create a custom property for our leads contact, it has no time stamp field for its change. This is a very disadvantages when it comes to data analysis, for example they want to know what lifecycle stage each lead went through, and when lead enter and leave those stages. I aim to develop an app to make this happen effortlessly by default.
 
-First, at my previous company we cound't find a CRM platform in the market that has much customizable. Even though we can create a custom property for our leads contact, it has no time stamp field for its change. This is a very disadvantages when it comes to data analysis, for example they want to know what lifecycle stage each lead went through, and when lead enter and leave those stages. I aim to develop an app to make this happen effortlessly by default.
-
-Second, I started from the infrastructure and operation side, meaning that I've been mastered TCP/IP networking, know how containerization such as Docker and Kubernetes leverages linux feature such as namespaces, and so on way before learn how to write a fully functional REST API backend. So at somepoint I decided to practice React and Go seriously so I can make a one-man-show project, and here it is. 
 
 ### 2. Data Modeling
 
