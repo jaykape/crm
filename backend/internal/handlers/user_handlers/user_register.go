@@ -1,10 +1,10 @@
-package handlers
+package userhandlers
 
 import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/jaykape/crm/backend/internal/service"
+	"github.com/jaykape/crm/backend/internal/app"
 )
 
 type registerRequest struct {
@@ -14,7 +14,8 @@ type registerRequest struct {
 	Password  string `json:"password" validate:"required,min=8,max=72"`
 }
 
-func RegisterHandler(s *service.UserService) http.HandlerFunc {
+func RegisterHandler(app *app.Application) http.HandlerFunc {
+	s := app.Services.User
 	return func(w http.ResponseWriter, r *http.Request) {
 		var req registerRequest
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {

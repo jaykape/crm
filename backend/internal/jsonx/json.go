@@ -1,9 +1,10 @@
-package main
+package jsonx
 
 import (
 	"encoding/json"
 	"errors"
 	"io"
+	"maps"
 	"net/http"
 )
 
@@ -13,16 +14,14 @@ type JSONResponse struct {
 	Data    any    `json:"data,omitempty"`
 }
 
-func (app *application) writeJSON(w http.ResponseWriter, status int, data any, headers ...http.Header) error {
+func WriteJSON(w http.ResponseWriter, status int, data any, headers ...http.Header) error {
 	out, err := json.Marshal(data)
 	if err != nil {
 		return err
 	}
 
 	if len(headers) > 0 {
-		for key, value := range headers[0] {
-			w.Header()[key] = value
-		}
+		maps.Copy(w.Header(), headers[0])
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -35,7 +34,7 @@ func (app *application) writeJSON(w http.ResponseWriter, status int, data any, h
 	return nil
 }
 
-func (app *application) readJSON(w http.ResponseWriter, r *http.Request, data any) error {
+func ReadJSON(w http.ResponseWriter, r *http.Request, data any) error {
 	maxBytes := 1024 * 1024 // 1MB size
 	r.Body = http.MaxBytesReader(w, r.Body, int64(maxBytes))
 
@@ -54,5 +53,18 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, data an
 	}
 
 	return nil
+}
 
+func ErrorJSON(w http.ResponseWriter, err error, status ...int) error {
+	statusCode := http.StatusBadRequest
+
+	if len(status) > 0 {
+		statusCode = status[0]
+	}
+
+	var payload JSONResponse
+	payload.Error = true
+	payload.Message = err.Error()
+
+	return WriteJSON(w, statusCode, payload)
 }

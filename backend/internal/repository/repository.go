@@ -1,12 +1,12 @@
 package repository
 
 import (
-	"database/sql"
+	"context"
 
 	"github.com/jaykape/crm/backend/internal/models"
 )
 
-type DatabaseRepo interface {
-	AllContacts() ([]*models.Contact, error)
-	Connection() *sql.DB
+type UserRepo interface {
+	CreateUser(ctx context.Context, u *models.User) error
+	EmailExists(ctx context.Context, email string) (bool, error)
 }
