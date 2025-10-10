@@ -6,7 +6,7 @@ import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import Dashboard from "./components/Dashboard.jsx";
+import Sidebar from "./components/Sidebar.jsx";
 import Contacts from "./pages/Contacts.jsx";
 import Deals from "./pages/Deals.jsx";
 import Reports from "./pages/Reports.jsx";
@@ -35,7 +35,7 @@ export default function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />}>
+          <Route path="dashboard" element={<Sidebar />}>
             <Route path="contacts" element={<Contacts />} />
             <Route path="deals" element={<Deals />} />
             <Route path="reports" element={<Reports />} />
