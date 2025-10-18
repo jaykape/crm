@@ -1,5 +1,7 @@
 # CRM (Customer Relation Mamagement) Platform
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/jaykape/crm/backend)](https://goreportcard.com/report/github.com/jaykape/crm/backend)
+
 This is my project for fullstack CRM application that helps buisiness work with leads.
 
 You can check the live demo here:  [crm.kape.live](https://crm.kape.live)
